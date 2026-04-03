@@ -79,6 +79,52 @@
     .hero .sub { font-size: 0.9rem; opacity: 0.85; margin-top: 8px; }
 
     /* Countdown */
+    /* Announcement Bar */
+    .announcement-bar {
+      background: linear-gradient(135deg, #fbbf24, #f97316);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #7c2d12;
+    }
+    .announcement-label {
+      background: rgba(255,255,255,0.4);
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .announcement-text {
+      flex: 1;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+    .announcement-edit-btn {
+      background: rgba(255,255,255,0.5);
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    body.night .announcement-bar {
+      background: linear-gradient(135deg, #92400e, #c2410c);
+      color: #fef3c7;
+    }
+
+    /* Split Section */
+    .split-section {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 2px 10px rgba(8,145,178,0.08);
+    }
+
     .countdown-bar {
       background: var(--card-bg);
       border-radius: 14px;
@@ -340,6 +386,17 @@
 
 <div class="container">
 
+  <!-- Announcement -->
+  <div class="announcement-bar" id="announcement-bar">
+    <div class="announcement-label">📢 公告</div>
+    <div class="announcement-text" id="announcement-text">點我新增公告訊息</div>
+    <button class="announcement-edit-btn" onclick="editAnnouncement()">✏️</button>
+  </div>
+  <div class="announcement-input-bar" id="announcement-input-bar" style="display:none">
+    <input type="text" id="announcement-input" placeholder="輸入公告內容..." style="flex:1;padding:10px 14px;border:2px solid var(--primary);border-radius:10px;font-size:0.9rem;background:var(--card-bg);color:var(--text)">
+    <button onclick="saveAnnouncement()" style="padding:10px 16px;background:var(--primary);color:white;border:none;border-radius:10px;cursor:pointer;font-weight:600;margin-left:8px">發布</button>
+  </div>
+
   <!-- Countdown -->
   <div class="countdown-bar">
     <div class="label">⏱️ 出發倒數</div>
@@ -357,7 +414,7 @@
 
   <!-- Participants -->
   <div class="section">
-    <h2>👥 參加名單(共20人)</h2>
+    <h2>👥 參加名單 <span id="checkin-count" style="font-size:0.85rem;color:#64748b;font-weight:400">(已報到 0/20 人)</span></h2>
     <div class="participant-grid" id="participant-list"></div>
   </div>
 
@@ -369,8 +426,8 @@
       <img src="https://cdn-icall.nidbox.com.tw/Attachment/202305/5a7b8a7bf9cc4a7cf9d94e0ab04c4e28.gif" alt="小琉球地圖" style="width:100%;border-radius:12px;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
       <div style="background:linear-gradient(135deg,#0891b2,#0e7490);border-radius:12px;padding:20px;color:white;text-align:center;display:none">
         <p style="font-size:1rem;margin-bottom:12px">🗺️ 小琉球旅遊地圖</p>
-        <p style="font-size:0.85rem;opacity:0.85">📍 熱門景點：美人洞、烏鬼洞、山豬溝、蛤板灣、厚石群礁</p>
-        <p style="font-size:0.85rem;opacity:0.85;margin-top:6px">🦐 美食推薦：洪師傅、旺昌水族、冰箱燕號刨冰</p>
+        <p style="font-size:0.85rem;opacity:0.85">📍 熱門景點:美人洞、烏鬼洞、山豬溝、蛤板灣、厚石群礁</p>
+        <p style="font-size:0.85rem;opacity:0.85;margin-top:6px">🦐 美食推薦:洪師傅、旺昌水族、冰箱燕號刨冰</p>
       </div>
     </div>
     <button class="map-toggle" onclick="toggleMap(this.nextElementSibling)">🚢 東港碼頭 ▼</button>
@@ -503,11 +560,74 @@
     <div id="checklist"></div>
   </div>
 
+  <!-- Packing Guidance -->
+  <div class="section">
+    <h2>🗂️ 行李收納指引</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="tip-icon">🎒</span><div><div style="font-weight:600">證件</div><div style="font-size:0.8rem;color:#64748b">身份證、保單</div></div></div>
+      <div class="tip-card"><span class="tip-icon">💊</span><div><div style="font-weight:600">藥品</div><div style="font-size:0.8rem;color:#64748b">暈船藥、OK繃</div></div></div>
+      <div class="tip-card"><span class="tip-icon">🩱</span><div><div style="font-weight:600">泳裝</div><div style="font-size:0.8rem;color:#64748b">泳衣、浮潛裝備</div></div></div>
+      <div class="tip-card"><span class="tip-icon">🔌</span><div><div style="font-weight:600">3C</div><div style="font-size:0.8rem;color:#64748b">手機、防水袋</div></div></div>
+      <div class="tip-card"><span class="tip-icon">🧴</span><div><div style="font-weight:600">防曬</div><div style="font-size:0.8rem;color:#64748b">防曬乳、蘆薈膠</div></div></div>
+      <div class="tip-card"><span class="tip-icon">👟</span><div><div style="font-weight:600">鞋子</div><div style="font-size:0.8rem;color:#64748b">拖鞋、涼鞋</div></div></div>
+      <div class="tip-card"><span class="tip-icon">💰</span><div><div style="font-weight:600">金錢</div><div style="font-size:0.8rem;color:#64748b">現金、信用卡</div></div></div>
+      <div class="tip-card"><span class="tip-icon">🎟️</span><div><div style="font-weight:600">票券</div><div style="font-size:0.8rem;color:#64748b">船票預訂確認</div></div></div>
+    </div>
+  </div>
+
   <!-- Budget Calculator -->
   <div class="section">
     <h2>💰 預算計算機</h2>
     <div id="budget"></div>
-    <div class="budget-total">合計:$<span id="budget-total">0</span></div>
+    <div class="budget-total">合計：$<span id="budget-total">0</span></div>
+    <div class="split-section" style="margin-top:16px">
+      <h3 style="font-size:1rem;margin-bottom:10px;color:var(--secondary)">💸 費用分攤</h3>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <input type="number" id="split-people" placeholder="人數" min="1" value="20" style="width:70px;padding:8px 10px;border:2px solid #e2e8f0;border-radius:8px;font-size:0.9rem;text-align:center;background:var(--card-bg);color:var(--text)" oninput="updateSplit()">
+        <span style="font-size:0.88rem;color:#64748b">人均攤約</span>
+        <span id="per-person" style="font-size:1.1rem;font-weight:700;color:var(--primary)">$0</span>
+      </div>
+      <div style="margin-top:12px">
+        <h4 style="font-size:0.88rem;color:#64748b;margin-bottom:8px">📦 費用記錄</h4>
+        <div id="expense-log"></div>
+        <button onclick="addExpense()" style="margin-top:8px;padding:8px 14px;background:var(--secondary);color:white;border:none;border-radius:8px;font-size:0.85rem;cursor:pointer">+ 新增費用</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emergency Contacts -->
+  <div class="section">
+    <h2>📞 緊急聯絡</h2>
+    <div class="tips-grid" id="emergency-contacts">
+      <div class="tip-card" onclick="this.contentEditable=true;this.focus()" title="點擊編輯">
+        <span class="tip-icon">🚢</span>
+        <div>
+          <div style="font-size:0.75rem;color:#94a3b8">東港船班</div>
+          <div style="font-size:0.88rem;font-weight:600" class="ec-value" data-key="boat">點我填寫</div>
+        </div>
+      </div>
+      <div class="tip-card" onclick="this.contentEditable=true;this.focus()" title="點擊編輯">
+        <span class="tip-icon">🏠</span>
+        <div>
+          <div style="font-size:0.75rem;color:#94a3b8">民宿/向導</div>
+          <div style="font-size:0.88rem;font-weight:600" class="ec-value" data-key="host">點我填寫</div>
+        </div>
+      </div>
+      <div class="tip-card" onclick="this.contentEditable=true;this.focus()" title="點擊編輯">
+        <span class="tip-icon">🏥</span>
+        <div>
+          <div style="font-size:0.75rem;color:#94a3b8">保險公司</div>
+          <div style="font-size:0.88rem;font-weight:600" class="ec-value" data-key="insurance">點我填寫</div>
+        </div>
+      </div>
+      <div class="tip-card" onclick="this.contentEditable=true;this.focus()" title="點擊編輯">
+        <span class="tip-icon">🆘</span>
+        <div>
+          <div style="font-size:0.75rem;color:#94a3b8">緊急電話</div>
+          <div style="font-size:0.88rem;font-weight:600" class="ec-value" data-key="emergency">點我填寫</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- QR Code Section -->
@@ -520,7 +640,7 @@
 </div>
 
 <footer>
-  <p>🐢 家族旅遊 · 2026.05.01 · 快樂出航⛵️！</p>
+  <p>🐢 家族旅遊 · 2026.05.01 · 快樂出航⛵️!</p>
 </footer>
 
 <script>
@@ -549,10 +669,10 @@ function toggleCheckIn(i, el) {
   const name = participants[i];
   if (checked.includes(i)) {
     checked = checked.filter(x => x !== i);
-    showToast(`❌ 取消報到：${name}`);
+    showToast(`❌ 取消報到:${name}`);
   } else {
     checked.push(i);
-    showToast(`✅ 歡迎參加！${name} 報到成功 🎉`);
+    showToast(`✅ 歡迎參加!${name} 報到成功 🎉`);
   }
   localStorage.setItem('liuqiu_checked_in', JSON.stringify(checked));
   renderParticipants();
@@ -747,9 +867,115 @@ document.addEventListener('DOMContentLoaded', () => {
   renderBudget();
   updateBudgetTotal();
   updateCountdown();
+  updateCheckinCount();
+  updateAnnouncement();
+  updateEmergencyContacts();
+  renderExpenseLog();
   setInterval(updateCountdown, 1000);
   fetchWeather();
 });
+
+// ─── ANNOUNCEMENT ───
+function updateAnnouncement() {
+  const text = localStorage.getItem('liuqiu_announcement') || '快樂出航⛵️ 一起玩翻小琉球！';
+  document.getElementById('announcement-text').textContent = text;
+}
+
+function editAnnouncement() {
+  const input = document.getElementById('announcement-input');
+  input.value = localStorage.getItem('liuqiu_announcement') || '';
+  document.getElementById('announcement-input-bar').style.display = 'flex';
+  input.focus();
+}
+
+function saveAnnouncement() {
+  const val = document.getElementById('announcement-input').value.trim() || '快樂出航⛵️ 一起玩翻小琉球！';
+  localStorage.setItem('liuqiu_announcement', val);
+  document.getElementById('announcement-input-bar').style.display = 'none';
+  updateAnnouncement();
+  showToast('公告已更新 📢');
+}
+
+// ─── CHECKIN COUNT ───
+function updateCheckinCount() {
+  const checked = JSON.parse(localStorage.getItem('liuqiu_checked_in') || '[]');
+  document.getElementById('checkin-count').textContent = `已報到 ${checked.length}/20 人`;
+}
+
+// Override renderParticipants to also update count
+const _origRender = renderParticipants;
+function renderParticipants() {
+  _origRender();
+  updateCheckinCount();
+}
+
+// ─── EMERGENCY CONTACTS ───
+function updateEmergencyContacts() {
+  document.querySelectorAll('.ec-value').forEach(el => {
+    const key = el.dataset.key;
+    const val = localStorage.getItem('liuqiu_ec_' + key);
+    if (val) el.textContent = val;
+  });
+  document.querySelectorAll('.ec-value').forEach(el => {
+    el.addEventListener('blur', function() {
+      const key = this.dataset.key;
+      localStorage.setItem('liuqiu_ec_' + key, this.textContent.trim());
+      showToast('聯絡資訊已儲存 📞');
+    });
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { e.preventDefault(); this.blur(); }
+    });
+  });
+}
+
+// ─── EXPENSE LOG ───
+let expenseCount = 0;
+function addExpense() {
+  const name = prompt('付款人名字：');
+  if (!name) return;
+  const amount = prompt('金額：');
+  if (!amount || isNaN(amount)) return;
+  const desc = prompt('費用說明（可略）：') || '';
+  let log = JSON.parse(localStorage.getItem('liuqiu_expenses') || '[]');
+  log.push({ name, amount: parseInt(amount), desc, id: Date.now() });
+  localStorage.setItem('liuqiu_expenses', JSON.stringify(log));
+  renderExpenseLog();
+  updateBudgetTotal();
+  showToast(`✅ ${name} 付了 $${amount}`);
+}
+
+function renderExpenseLog() {
+  const log = JSON.parse(localStorage.getItem('liuqiu_expenses') || '[]');
+  const container = document.getElementById('expense-log');
+  if (!log.length) { container.innerHTML = '<div style="font-size:0.85rem;color:#94a3b8;text-align:center;padding:8px">還沒有費用記錄</div>'; return; }
+  container.innerHTML = log.map(e => `
+    <div style="display:flex;align-items:center;background:var(--card-bg);border-radius:8px;padding:8px 12px;margin-bottom:6px;gap:8px">
+      <span style="flex:1;font-size:0.88rem"><strong>${e.name}</strong>${e.desc ? ' - ' + e.desc : ''}</span>
+      <span style="color:var(--primary);font-weight:700">$${e.amount.toLocaleString()}</span>
+      <button onclick="deleteExpense(${e.id})" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:0.85rem">✕</button>
+    </div>`).join('');
+}
+
+function deleteExpense(id) {
+  let log = JSON.parse(localStorage.getItem('liuqiu_expenses') || '[]');
+  log = log.filter(e => e.id !== id);
+  localStorage.setItem('liuqiu_expenses', JSON.stringify(log));
+  renderExpenseLog();
+  updateBudgetTotal();
+}
+
+function updateSplit() {
+  const people = parseInt(document.getElementById('split-people').value) || 20;
+  const total = parseInt(document.getElementById('budget-total').textContent.replace(/,/g,'')) || 0;
+  document.getElementById('per-person').textContent = '$' + Math.round(total / people).toLocaleString();
+}
+
+// Override updateBudgetTotal to also update split
+const _origUpdateTotal = updateBudgetTotal;
+function updateBudgetTotal() {
+  _origUpdateTotal();
+  updateSplit();
+}
 </script>
 </body>
 </html>
