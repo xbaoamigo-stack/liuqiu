@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小琉球旅遊懶人包 🌊🐢</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0891b2;
+      --secondary: #0e7490;
+      --accent: #fbbf24;
+      --bg: #f0f9ff;
+      --text: #164e63;
+      --card-bg: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 0 0 32px 32px;
+      color: white;
+      margin-bottom: 40px;
+    }
+    .hero h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+    .hero .date-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--text);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .hero .emoji-row { font-size: 2rem; margin-top: 16px; }
+
+    .section { margin-bottom: 48px; }
+    .section h2 { font-size: 1.4rem; margin-bottom: 20px; padding-left: 12px; border-left: 4px solid var(--primary); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(8, 145, 178, 0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(8, 145, 178, 0.15);
+    }
+    .card-icon { font-size: 2rem; margin-bottom: 10px; }
+    .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
+    .card-desc { font-size: 0.9rem; color: #64748b; }
+    .card-tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      background: #e0f2fe;
+      color: var(--primary);
+    }
+
+    .accordion-item {
+      background: var(--card-bg);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(8,145,178,0.06);
+    }
+    .accordion-header {
+      padding: 16px 20px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .accordion-header:hover { background: #f0f9ff; }
+    .accordion-header .arrow { transition: transform 0.3s; }
+    .accordion-item.open .arrow { transform: rotate(180deg); }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 20px;
+    }
+    .accordion-item.open .accordion-body { max-height: 200px; padding: 0 20px 16px; }
+    .accordion-body p { font-size: 0.9rem; color: #64748b; }
+
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card:nth-child(1) { animation-delay: 0ms; }
+    .card:nth-child(2) { animation-delay: 80ms; }
+    .card:nth-child(3) { animation-delay: 160ms; }
+    .card:nth-child(4) { animation-delay: 240ms; }
+    .card:nth-child(5) { animation-delay: 320ms; }
+
+    .copy-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { background: var(--secondary); }
+    .copy-btn.copied { background: #10b981; }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🏝️ 小琉球旅遊懶人包</h1>
+  <span class="date-tag">🗓️ 2026.05.01 出發</span>
+  <div class="emoji-row">🌊 🐢 🏖️ 🍹 🐠</div>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <h2>🌟 必去景點</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">🕳️</div>
+        <div class="card-title">美人洞</div>
+        <div class="card-desc">珊瑚礁洞探索，神秘的海蝕洞穴體驗</div>
+        <span class="card-tag">推薦</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">👻</div>
+        <div class="card-title">烏鬼洞</div>
+        <div class="card-desc">歷史悠久的神秘海蝕洞，傳說故事多</div>
+        <span class="card-tag">必去</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌳</div>
+        <div class="card-title">山豬溝</div>
+        <div class="card-desc">森林步道，適合拍照打卡</div>
+        <span class="card-tag">自然</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏖️</div>
+        <div class="card-title">蛤板灣</div>
+        <div class="card-desc">貝殼沙灘，拍夕陽絕佳地點</div>
+        <span class="card-tag">必去</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🪨</div>
+        <div class="card-title">厚石群礁</div>
+        <div class="card-desc">奇岩怪石，海岸線壯觀</div>
+        <span class="card-tag">網美</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🍽️ 在地美食</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">🍧</div>
+        <div class="card-title">冰箱燕號</div>
+        <div class="card-desc">網紅刨冰，夏日消暑必吃</div>
+        <span class="card-tag">甜點</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🐌</div>
+        <div class="card-title">小蝸牛</div>
+        <div class="card-desc">異國料理，環境優美</div>
+        <span class="card-tag">推薦</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏠</div>
+        <div class="card-title">躲在這</div>
+        <div class="card-desc">特色餐廳，隱藏版美食</div>
+        <span class="card-tag">特色</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🍳</div>
+        <div class="card-title">洪師傅</div>
+        <div class="card-desc">熱炒小吃，在地人推薦</div>
+        <span class="card-tag">平價</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">🐟</div>
+        <div class="card-title">旺昌水族</div>
+        <div class="card-desc">海鮮料理吃到飽</div>
+        <span class="card-tag">海鮮</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📋 實用資訊</h2>
+    
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggle(this)">
+        🚢 如何抵達小琉球？
+        <span class="arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>從屏東東港搭乘客船，航程約 25-30 分鐘。<br>
+        來回票價約 400-600 元，視船公司而定。</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggle(this)">
+        🌤️ 天氣建議
+        <span class="arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>5月平均氣溫 26-32 度，太陽很曬！<br>
+        建議攜帶防曬乳、太眼鏡、遮陽帽。</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggle(this)">
+        🎒 必帶物品
+        <span class="arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>泳衣、拖鞋、防曬、泳鏡（浮潛用）、<br>
+        暈船藥（怕暈車的人建議吃）、手機防水袋</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggle(this)">
+        🛵 島上交通
+        <span class="arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>建議租機車（一天約 300-400 元），<br>
+        島不大，騎機車最方便！</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggle(this)">
+        📞 緊急聯絡
+        <span class="arrow">▼</span>
+      </div>
+      <div class="accordion-body">
+        <p>小琉球消防局：07-861-2119<br>
+          琉球鄉衛生所：07-861-2131</p>
+        <button class="copy-btn" onclick="copyNum(this, '07-861-2119')">複製消防局電話</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>🐢 小琉球旅遊懶人包 · 2026.05.01 · Made with 🌊</p>
+</footer>
+
+<script>
+  function toggle(el) {
+    const item = el.parentElement;
+    item.classList.toggle('open');
+  }
+
+  function copyNum(btn, num) {
+    navigator.clipboard.writeText(num).then(() => {
+      btn.textContent = '已複製 ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = '複製電話';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  }
+</script>
+
+</body>
+</html>
