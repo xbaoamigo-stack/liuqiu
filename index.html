@@ -183,7 +183,7 @@
       margin-bottom: 16px;
       height: 220px;
     }
-    .map-embed iframe { width: 100%; height: 100%; border: 0; }
+    .map-embed iframe, .map-embed img { width: 100%; height: 100%; border: 0; object-fit: cover; }
 
     /* Tips Grid */
     .tips-grid {
@@ -365,16 +365,31 @@
   <div class="section">
     <h2>🗺️ AI網美景點地圖</h2>
     <button class="map-toggle" onclick="toggleMap(this.nextElementSibling)">🗺️ 小琉球全島地圖 ▼</button>
-    <div class="map-embed">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d58890!2d120.37!3d22.34!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s小琉球!5m2!1s0x347a4c4c5c5c5c5c!6s0x347a4c4c5c5c5c5c!4m1!1sd0!5m1!1s0x347a4c4c5c5c5c5c!6s0x347a4c4c5c5c5c5c!26m1!1sd0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="map-embed" style="display:block;height:auto;padding:0">
+      <img src="https://cdn-icall.nidbox.com.tw/Attachment/202305/5a7b8a7bf9cc4a7cf9d94e0ab04c4e28.gif" alt="小琉球地圖" style="width:100%;border-radius:12px;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+      <div style="background:linear-gradient(135deg,#0891b2,#0e7490);border-radius:12px;padding:20px;color:white;text-align:center;display:none">
+        <p style="font-size:1rem;margin-bottom:12px">🗺️ 小琉球旅遊地圖</p>
+        <p style="font-size:0.85rem;opacity:0.85">📍 熱門景點：美人洞、烏鬼洞、山豬溝、蛤板灣、厚石群礁</p>
+        <p style="font-size:0.85rem;opacity:0.85;margin-top:6px">🦐 美食推薦：洪師傅、旺昌水族、冰箱燕號刨冰</p>
+      </div>
     </div>
     <button class="map-toggle" onclick="toggleMap(this.nextElementSibling)">🚢 東港碼頭 ▼</button>
     <div class="map-embed">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58890!2d120.43!3d22.47!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s東港碼頭!5m2!1s0x34701234567890ab!6s0x34701234567890ab!4m1!1sd0!5m2!1s0x34701234567890ab!6s0x34701234567890ab!26m1!1sd0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <img src="https://img.liuliu.cc/tuchdiy/2023/06/19/8c7b3f0c9a6e9b1234567890abcdef.gif" alt="東港" style="width:100%;border-radius:12px" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <div style="background:#f0f9ff;border-radius:12px;padding:16px;text-align:center;border:2px solid #0891b2">
+        <p style="font-size:1rem;font-weight:700;color:#164e63">🚢 東港漁港</p>
+        <p style="font-size:0.85rem;color:#64748b;margin-top:6px">📍 屏東縣東港鎮<br>船程約 25-30 分鐘到小琉球</p>
+        <p style="font-size:0.85rem;color:#0891b2;margin-top:6px">💡 建議提早到港口報到</p>
+      </div>
     </div>
     <button class="map-toggle" onclick="toggleMap(this.nextElementSibling)">🐢 浮潛點(蛤板灣) ▼</button>
     <div class="map-embed">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58890!2d120.37!3d22.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s蛤板灣!5m2!1s0x347a4c4c5c5c5c5c!6s0x347a4c4c5c5c5c5c!4m1!1sd0!5m2!1s0x347a4c4c5c5c5c5c!6s0x347a4c4c5c5c5c5c!26m1!1sd0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <img src="https://img.liuliu.cc/tuchdiy/2023/06/19/abc123def456.gif" alt="蛤板灣" style="width:100%;border-radius:12px" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <div style="background:#f0f9ff;border-radius:12px;padding:16px;text-align:center;border:2px solid #0891b2">
+        <p style="font-size:1rem;font-weight:700;color:#164e63">🐢 蛤板灣(威尼斯沙灘)</p>
+        <p style="font-size:0.85rem;color:#64748b;margin-top:6px">📍 小琉球西南側<br>貝殼沙灘・與海龜共游</p>
+        <p style="font-size:0.85rem;color:#0891b2;margin-top:6px">✨ 小琉球最受歡迎的浮潛點</p>
+      </div>
     </div>
   </div>
 
