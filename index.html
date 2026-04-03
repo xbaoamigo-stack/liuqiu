@@ -331,7 +331,7 @@
   <h1>🏝️ 小琉球一日遊</h1>
   <span class="date-tag">🗓️ 2026.05.01 · 精華版</span>
   <div class="emoji-row">🌊 🐢 🏖️</div>
-  <p class="sub">一天玩遍經典景點，不趕行程</p>
+  <p class="sub">一天玩遍經典景點,不趕行程</p>
 </div>
 
 <div class="container">
@@ -344,7 +344,7 @@
 
   <!-- Weather -->
   <div class="weather-bar" id="weather-bar">
-    <div class="w-icon">☁️</div>
+    <div class="w-icon" id="w-icon">☁️</div>
     <div class="w-info">
       <div class="w-temp" id="w-temp">--°C</div>
       <div class="w-desc" id="w-desc"><span class="w-loading">天氣載入中...</span></div>
@@ -353,7 +353,7 @@
 
   <!-- Participants -->
   <div class="section">
-    <h2>👥 參加名單（共20人）</h2>
+    <h2>👥 參加名單(共20人)</h2>
     <div class="participant-grid" id="participant-list"></div>
   </div>
 
@@ -362,15 +362,15 @@
     <h2>🗺️ 景點地圖</h2>
     <button class="map-toggle" onclick="toggleMap(this.nextElementSibling)">🗺️ 小琉球全島地圖 ▼</button>
     <div class="map-embed">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58888.755661227!2d120.365！3d22.33！4d120.383！5m3！1s0x347a4c4c5c5c5c5c！6s0x347a4c4c5c5c5c5c！7m2！1d22.34！2d120.38！8m2！3d22.33！4d120.37！9m1！3e0!12m1!1sd0!18m1!1sd0!5m1！1s0x347a4c4c5c5c5c5c！6s0x347a4c4c5c5c5c5c！7m2！1d22.34！2d120.38！8m2！3d22.33！4d120.37！9m1！3e0" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d58890!2d120.37!3d22.34!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s小琉球!5m2!1s0x347a4c4c5c5c5c5c!6s0x347a4c4c5c5c5c5c!4m1!1sd0!5m1!1s0x347a4c4c5c5c5c5c!6s0x347a4c4c5c5c5c5c!26m1!1sd0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <button class="map-toggle" onclick="toggleMap(this.nextElementSibling)">🚢 東港碼頭 ▼</button>
     <div class="map-embed">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3705.758！2d120.433！3d22.463！4d120.47！5m3！1s0x34701234567890ab！6s0x34701234567890ab！7m2！1d22.47！2d120.44！8m2！3d22.46！4d120.43！9m1！3e0!12m1！1sd0!18m1！1sd0!5m1！1s0x34701234567890ab！6s0x34701234567890ab！7m2！1d22.47！2d120.44！8m2！3d22.46！4d120.43！9m1！3e0" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58890!2d120.43!3d22.47!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s東港碼頭!5m2!1s0x34701234567890ab!6s0x34701234567890ab!4m1!1sd0!5m2!1s0x34701234567890ab!6s0x34701234567890ab!26m1!1sd0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <button class="map-toggle" onclick="toggleMap(this.nextElementSibling)">🐢 浮潛點（蛤板灣） ▼</button>
     <div class="map-embed">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3705.758！2d120.365！3d22.345！4d120.38！5m3！1s0x34701234567890ab！6s0x34701234567890ab！7m2！1d22.35！2d120.37！8m2！3d22.34！4d120.36！9m1！3e0!12m1！1sd0!18m1！1sd0!5m1！1s0x34701234567890ab！6s0x34701234567890ab！7m2！1d22.35！2d120.37！8m2！3d22.34！4d120.36！9m1！3e0" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58890!2d120.37!3d22.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s蛤板灣!5m2!1s0x347a4c4c5c5c5c5c!6s0x347a4c4c5c5c5c5c!4m1!1sd0!5m2!1s0x347a4c4c5c5c5c5c!6s0x347a4c4c5c5c5c5c!26m1!1sd0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 
@@ -382,15 +382,15 @@
       <div class="time-block" data-time="07:30">
         <div class="card">
           <div class="card-title"><span class="icon">🚢</span> 東港 → 小琉球</div>
-          <div class="card-desc">早起搭船，航程約 25-30 分鐘</div>
-          <div class="card-note">記得吃暈船藥！</div>
+          <div class="card-desc">早起搭船,航程約 25-30 分鐘</div>
+          <div class="card-note">記得吃暈船藥!</div>
         </div>
       </div>
 
       <div class="time-block" data-time="08:00">
         <div class="card">
           <div class="card-title"><span class="icon">🛵</span> 租機車環島</div>
-          <div class="card-desc">島上最方便的交通工具，一天約 300-350 元</div>
+          <div class="card-desc">島上最方便的交通工具,一天約 300-350 元</div>
           <div class="card-note">建議先騎一圈認識地形</div>
         </div>
       </div>
@@ -398,24 +398,24 @@
       <div class="time-block" data-time="08:30">
         <div class="card">
           <div class="card-title"><span class="icon">🕳️</span> 美人洞</div>
-          <div class="card-desc">珊瑚礁洞探索，神秘海蝕洞穴</div>
-          <div class="card-note">門票 $70，預計停留 40 分鐘</div>
+          <div class="card-desc">珊瑚礁洞探索,神秘海蝕洞穴</div>
+          <div class="card-note">門票 $70,預計停留 40 分鐘</div>
         </div>
       </div>
 
       <div class="time-block" data-time="09:30">
         <div class="card">
           <div class="card-title"><span class="icon">👻</span> 烏鬼洞</div>
-          <div class="card-desc">歷史悠久的神秘海蝕洞，傳說多</div>
-          <div class="card-note">門票 $50，預計停留 30 分鐘</div>
+          <div class="card-desc">歷史悠久的神秘海蝕洞,傳說多</div>
+          <div class="card-note">門票 $50,預計停留 30 分鐘</div>
         </div>
       </div>
 
       <div class="time-block" data-time="10:00">
         <div class="card">
           <div class="card-title"><span class="icon">🌳</span> 山豬溝</div>
-          <div class="card-desc">森林步道，拍照打卡好去處</div>
-          <div class="card-note">門票 $40，預計停留 30 分鐘</div>
+          <div class="card-desc">森林步道,拍照打卡好去處</div>
+          <div class="card-note">門票 $40,預計停留 30 分鐘</div>
         </div>
       </div>
 
@@ -423,22 +423,22 @@
         <div class="card">
           <div class="card-title"><span class="icon">🏖️</span> 蛤板灣玩水</div>
           <div class="card-desc">貝殼沙灘踩水、拍照</div>
-          <div class="card-note">帶手機防水袋！</div>
+          <div class="card-note">帶手機防水袋!</div>
         </div>
       </div>
 
       <div class="time-block" data-time="12:00">
         <div class="card">
           <div class="card-title"><span class="icon">🍽️</span> 在地美食午餐</div>
-          <div class="card-desc">洪師傅 or 旺昌水族，吃飽再繼續</div>
-          <div class="card-note">參考：冰箱燕號刨冰當甜點</div>
+          <div class="card-desc">洪師傅 or 旺昌水族,吃飽再繼續</div>
+          <div class="card-note">參考:冰箱燕號刨冰當甜點</div>
         </div>
       </div>
 
       <div class="time-block" data-time="14:00">
         <div class="card">
           <div class="card-title"><span class="icon">🐢</span> 浮潛看海龜</div>
-          <div class="card-desc">小琉球最不能錯的活動！與海龜共游</div>
+          <div class="card-desc">小琉球最不能錯的活動!與海龜共游</div>
           <div class="card-note">行程可找民宿代訂 or 沙灘直接報名</div>
         </div>
       </div>
@@ -446,15 +446,15 @@
       <div class="time-block" data-time="16:00">
         <div class="card">
           <div class="card-title"><span class="icon">🪨</span> 厚石群礁</div>
-          <div class="card-desc">奇岩怪石海岸線，看夕陽絕佳點</div>
-          <div class="card-note">建議 17:00 前到，等夕陽</div>
+          <div class="card-desc">奇岩怪石海岸線,看夕陽絕佳點</div>
+          <div class="card-note">建議 17:00 前到,等夕陽</div>
         </div>
       </div>
 
       <div class="time-block" data-time="18:00">
         <div class="card">
           <div class="card-title"><span class="icon">🍧</span> 冰箱燕號刨冰</div>
-          <div class="card-desc">網紅店，夏日消暑必吃</div>
+          <div class="card-desc">網紅店,夏日消暑必吃</div>
           <div class="card-note">夕陽後剛好休息吃冰</div>
         </div>
       </div>
@@ -462,8 +462,8 @@
       <div class="time-block" data-time="18:30">
         <div class="card">
           <div class="card-title"><span class="icon">🚢</span> 返程</div>
-          <div class="card-desc">最後一班船約 18:30-19:00，注意時間</div>
-          <div class="card-note">別錯過船班！</div>
+          <div class="card-desc">最後一班船約 18:30-19:00,注意時間</div>
+          <div class="card-note">別錯過船班!</div>
         </div>
       </div>
 
@@ -480,7 +480,7 @@
   <div class="section">
     <h2>💰 預算計算機</h2>
     <div id="budget"></div>
-    <div class="budget-total">合計：$<span id="budget-total">0</span></div>
+    <div class="budget-total">合計:$<span id="budget-total">0</span></div>
   </div>
 
   <!-- QR Code Section -->
@@ -493,15 +493,15 @@
 </div>
 
 <footer>
-  <p>🐢 小琉球一日遊 · 2026.05.01 · 一天玩好玩滿！</p>
+  <p>🐢 小琉球一日遊 · 2026.05.01 · 一天玩好玩滿!</p>
 </footer>
 
 <script>
 // ─── PARTICIPANTS ───
 const participants = [
   "沛汝","志恩","才宸","威全","佳佩","芊妤","燕萍","明義","寧宥","育瑋",
-  "駿樺","小貓","親家母","秀梅","秀梅（同行）","胡麗儀","胡宇菲",
-  "李沅璋","李沅璋（同行）","詩筠"
+  "駿樺","小貓","親家母","秀梅","秀梅(同行)","胡麗儀","胡宇菲",
+  "李沅璋","李沅璋(同行)","詩筠"
 ];
 
 function renderParticipants() {
@@ -529,7 +529,7 @@ function toggleCheckIn(i, el) {
 }
 
 // ─── CHECKLIST ───
-const checklistItems = ["防曬乳","拖鞋／涼鞋","手機防水袋","暈船藥","太陽眼鏡","泳衣／浮潛裝備","毛巾","雨具","零食","泳鏡","吹風機（浮潛後用）"];
+const checklistItems = ["防曬乳","拖鞋/涼鞋","手機防水袋","暈船藥","太陽眼鏡","泳衣/浮潛裝備","毛巾","雨具","零食","泳鏡","吹風機(浮潛後用)"];
 
 function renderChecklist() {
   const container = document.getElementById('checklist');
@@ -594,7 +594,7 @@ function updateCountdown() {
   const now = new Date();
   const diff = target - now;
   if (diff <= 0) {
-    document.getElementById('countdown').textContent = '已出發！🚢';
+    document.getElementById('countdown').textContent = '已出發!🚢';
     return;
   }
   const d = Math.floor(diff / 86400000);
@@ -606,18 +606,21 @@ function updateCountdown() {
 
 // ─── WEATHER ───
 function fetchWeather() {
-  fetch('https://wttr.in/Liuqiu?format=1')
-    .then(r => r.text())
-    .then(txt => {
-      // Parse: "Liuqiu: +28°C, ..."
-      const match = txt.match(/\+?(\d+)°C/);
-      const temp = match ? match[1] + '°C' : '--°C';
-      const desc = txt.replace('Liuqiu:', '').replace(/\s+/g, ' ').trim();
+  // Liuqiu coordinates: 22.34, 120.38
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=22.34&longitude=120.38&current_weather=true&timezone=Asia/Taipei')
+    .then(r => r.json())
+    .then(data => {
+      const w = data.current_weather;
+      const temp = w.temperature + '°C';
+      const code = w.weathercode;
+      const icons = {0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌦️',61:'🌧️',63:'🌧️',65:'🌧️',71:'🌨️',73:'🌨️',75:'🌨️',80:'🌦️',81:'🌦️',82:'🌦️',95:'⛈️',96:'⛈️',99:'⛈️'};
+      const icon = icons[code] || '🌤️';
+      document.getElementById('w-icon').textContent = icon;
       document.getElementById('w-temp').textContent = temp;
-      document.getElementById('w-desc').innerHTML = desc;
+      document.getElementById('w-desc').textContent = '風速 ' + w.windspeed + ' km/h';
     })
     .catch(() => {
-      document.getElementById('w-desc').innerHTML = '天氣載入失敗';
+      document.getElementById('w-desc').textContent = '天氣載入失敗';
     });
 }
 
@@ -634,7 +637,7 @@ function sharePage() {
     navigator.share({ title: '小琉球一日遊', url });
   } else {
     navigator.clipboard.writeText(url).then(() => {
-      showToast('連結已複製！');
+      showToast('連結已複製!');
     });
   }
   // LINE share
