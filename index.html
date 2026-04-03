@@ -546,10 +546,13 @@ function renderParticipants() {
 
 function toggleCheckIn(i, el) {
   let checked = JSON.parse(localStorage.getItem('liuqiu_checked_in') || '[]');
+  const name = participants[i];
   if (checked.includes(i)) {
     checked = checked.filter(x => x !== i);
+    showToast(`❌ 取消報到：${name}`);
   } else {
     checked.push(i);
+    showToast(`✅ 歡迎參加！${name} 報到成功 🎉`);
   }
   localStorage.setItem('liuqiu_checked_in', JSON.stringify(checked));
   renderParticipants();
