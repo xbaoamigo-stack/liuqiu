@@ -14,15 +14,49 @@
       --text: #164e63;
       --card-bg: #ffffff;
     }
+    body.night {
+      --primary: #00d4ff;
+      --secondary: #009acb;
+      --accent: #ffd54f;
+      --bg: #1a1a2e;
+      --text: #e0e0e0;
+      --card-bg: #252542;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Noto Sans TC', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
     }
     .container { max-width: 700px; margin: 0 auto; padding: 20px; }
 
+    /* Floating Controls */
+    .floating-controls {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 100;
+    }
+    .ctrl-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: var(--primary);
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+    .ctrl-btn:hover { transform: scale(1.1); }
+
+    /* Hero */
     .hero {
       text-align: center;
       padding: 50px 20px;
@@ -35,7 +69,7 @@
     .hero .date-tag {
       display: inline-block;
       background: var(--accent);
-      color: var(--text);
+      color: #164e63;
       padding: 6px 16px;
       border-radius: 20px;
       font-weight: 500;
@@ -44,6 +78,37 @@
     .hero .emoji-row { font-size: 1.8rem; margin-top: 14px; }
     .hero .sub { font-size: 0.9rem; opacity: 0.85; margin-top: 8px; }
 
+    /* Countdown */
+    .countdown-bar {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(8,145,178,0.08);
+    }
+    .countdown-bar .label { font-size: 0.85rem; color: var(--secondary); margin-bottom: 6px; }
+    .countdown-bar .time { font-size: 1.4rem; font-weight: 700; color: var(--primary); letter-spacing: 2px; }
+    body.night .countdown-bar .time { color: #00d4ff; }
+
+    /* Weather Widget */
+    .weather-bar {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 2px 10px rgba(8,145,178,0.08);
+    }
+    .weather-bar .w-icon { font-size: 2rem; }
+    .weather-bar .w-info { flex: 1; }
+    .weather-bar .w-temp { font-size: 1.4rem; font-weight: 700; color: var(--text); }
+    .weather-bar .w-desc { font-size: 0.85rem; color: #64748b; }
+    .weather-bar .w-loading { color: #94a3b8; font-size: 0.88rem; }
+
+    /* Sections */
     .section { margin-bottom: 36px; }
     .section h2 { font-size: 1.3rem; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid var(--primary); }
 
@@ -86,16 +151,37 @@
       box-shadow: 0 2px 10px rgba(8,145,178,0.08);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    .time-block .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(8,145,178,0.14);
-    }
+    .time-block .card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(8,145,178,0.14); }
     .time-block .card-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
     .time-block .card-title .icon { font-size: 1.3rem; }
     .time-block .card-desc { font-size: 0.88rem; color: #64748b; }
     .time-block .card-note { font-size: 0.8rem; color: var(--secondary); margin-top: 4px; font-weight: 500; }
 
-    /* Tips */
+    /* Map Toggle */
+    .map-toggle {
+      background: var(--card-bg);
+      border: 2px solid var(--primary);
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 8px;
+    }
+    .map-toggle:hover { background: var(--primary); color: white; }
+    .map-embed {
+      display: none;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      height: 220px;
+    }
+    .map-embed iframe { width: 100%; height: 100%; border: 0; }
+
+    /* Tips Grid */
     .tips-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -112,6 +198,105 @@
       gap: 10px;
     }
     .tip-card .tip-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+    /* Checklist */
+    .checklist-item {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .checklist-item:hover { background: rgba(8,145,178,0.06); }
+    .checklist-item input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--primary); cursor: pointer; }
+    .checklist-item .cl-text { flex: 1; font-size: 0.92rem; }
+    .checklist-item.checked .cl-text { text-decoration: line-through; color: #94a3b8; }
+    .checklist-item .cl-check { font-size: 1rem; }
+
+    /* Budget */
+    .budget-row {
+      display: flex;
+      align-items: center;
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      gap: 10px;
+    }
+    .budget-row .br-label { flex: 1; font-size: 0.9rem; }
+    .budget-row .br-label span { font-size: 1.1rem; margin-right: 6px; }
+    .budget-row input {
+      width: 90px;
+      padding: 6px 10px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      text-align: right;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .budget-row input:focus { border-color: var(--primary); outline: none; }
+    .budget-total {
+      background: var(--primary);
+      color: white;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* Participant List */
+    .participant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    .participant-chip {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+    .participant-chip:hover { border-color: var(--primary); }
+    .participant-chip.checked-in {
+      background: rgba(8,145,178,0.1);
+      border-color: var(--primary);
+    }
+    .participant-chip .num { font-size: 0.75rem; color: #94a3b8; }
+    body.night .participant-chip .num { color: #666; }
+
+    /* Share Toast */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1a1a2e;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 24px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: transform 0.3s ease;
+      z-index: 200;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* QR Code */
+    .qr-section { text-align: center; }
+    .qr-section canvas { border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); margin: 12px auto; }
 
     footer {
       text-align: center;
@@ -132,6 +317,16 @@
 </head>
 <body>
 
+<!-- Floating Controls -->
+<div class="floating-controls">
+  <button class="ctrl-btn" onclick="toggleNight()" title="夜間模式">🌙</button>
+  <button class="ctrl-btn" onclick="sharePage()" title="分享">🔗</button>
+  <button class="ctrl-btn" onclick="showQR()" title="QR Code">📱</button>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
 <div class="hero">
   <h1>🏝️ 小琉球一日遊</h1>
   <span class="date-tag">🗓️ 2026.05.01 · 精華版</span>
@@ -141,6 +336,45 @@
 
 <div class="container">
 
+  <!-- Countdown -->
+  <div class="countdown-bar">
+    <div class="label">⏱️ 出發倒數</div>
+    <div class="time" id="countdown">載入中...</div>
+  </div>
+
+  <!-- Weather -->
+  <div class="weather-bar" id="weather-bar">
+    <div class="w-icon">☁️</div>
+    <div class="w-info">
+      <div class="w-temp" id="w-temp">--°C</div>
+      <div class="w-desc" id="w-desc"><span class="w-loading">天氣載入中...</span></div>
+    </div>
+  </div>
+
+  <!-- Participants -->
+  <div class="section">
+    <h2>👥 參加名單（共20人）</h2>
+    <div class="participant-grid" id="participant-list"></div>
+  </div>
+
+  <!-- Attractions Map -->
+  <div class="section">
+    <h2>🗺️ 景點地圖</h2>
+    <button class="map-toggle" onclick="toggleMap(this.nextElementSibling)">🗺️ 小琉球全島地圖 ▼</button>
+    <div class="map-embed">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58888.755661227!2d120.365！3d22.33！4d120.383！5m3！1s0x347a4c4c5c5c5c5c！6s0x347a4c4c5c5c5c5c！7m2！1d22.34！2d120.38！8m2！3d22.33！4d120.37！9m1！3e0!12m1!1sd0!18m1!1sd0!5m1！1s0x347a4c4c5c5c5c5c！6s0x347a4c4c5c5c5c5c！7m2！1d22.34！2d120.38！8m2！3d22.33！4d120.37！9m1！3e0" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <button class="map-toggle" onclick="toggleMap(this.nextElementSibling)">🚢 東港碼頭 ▼</button>
+    <div class="map-embed">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3705.758！2d120.433！3d22.463！4d120.47！5m3！1s0x34701234567890ab！6s0x34701234567890ab！7m2！1d22.47！2d120.44！8m2！3d22.46！4d120.43！9m1！3e0!12m1！1sd0!18m1！1sd0!5m1！1s0x34701234567890ab！6s0x34701234567890ab！7m2！1d22.47！2d120.44！8m2！3d22.46！4d120.43！9m1！3e0" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <button class="map-toggle" onclick="toggleMap(this.nextElementSibling)">🐢 浮潛點（蛤板灣） ▼</button>
+    <div class="map-embed">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3705.758！2d120.365！3d22.345！4d120.38！5m3！1s0x34701234567890ab！6s0x34701234567890ab！7m2！1d22.35！2d120.37！8m2！3d22.34！4d120.36！9m1！3e0!12m1！1sd0!18m1！1sd0!5m1！1s0x34701234567890ab！6s0x34701234567890ab！7m2！1d22.35！2d120.37！8m2！3d22.34！4d120.36！9m1！3e0" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <!-- Itinerary -->
   <div class="section">
     <h2>⏰ 推薦行程</h2>
     <div class="timeline">
@@ -236,28 +470,24 @@
     </div>
   </div>
 
+  <!-- Packing Checklist -->
   <div class="section">
-    <h2>🎒 必帶物品</h2>
-    <div class="tips-grid">
-      <div class="tip-card"><span class="tip-icon">🧴</span> 防曬乳（必備）</div>
-      <div class="tip-card"><span class="tip-icon">🩴</span> 拖鞋 / 涼鞋</div>
-      <div class="tip-card"><span class="tip-icon">📱</span> 手機防水袋</div>
-      <div class="tip-card"><span class="tip-icon">💊</span> 暈船藥</div>
-      <div class="tip-card"><span class="tip-icon">🕶️</span> 太陽眼鏡</div>
-      <div class="tip-card"><span class="tip-icon">👙</span> 泳衣 / 浮潛裝備</div>
-    </div>
+    <h2>📋 必帶清單</h2>
+    <div id="checklist"></div>
   </div>
 
+  <!-- Budget Calculator -->
   <div class="section">
-    <h2>💰 預算參考</h2>
-    <div class="tips-grid">
-      <div class="tip-card"><span class="tip-icon">🚢</span> 來回船票 $500-600</div>
-      <div class="tip-card"><span class="tip-icon">🛵</span> 機車 $300-350</div>
-      <div class="tip-card"><span class="tip-icon">🎫</span> 三景點票 $160</div>
-      <div class="tip-card"><span class="tip-icon">🐢</span> 浮潛 $400-600</div>
-      <div class="tip-card"><span class="tip-icon">🍽️</span> 午餐 $200-400</div>
-      <div class="tip-card"><span class="tip-icon">💰</span> 合計約 $1600-2100</div>
-    </div>
+    <h2>💰 預算計算機</h2>
+    <div id="budget"></div>
+    <div class="budget-total">合計：$<span id="budget-total">0</span></div>
+  </div>
+
+  <!-- QR Code Section -->
+  <div class="section qr-section" id="qr-section" style="display:none">
+    <h2>📱 QR Code</h2>
+    <canvas id="qr-canvas" width="200" height="200"></canvas>
+    <p style="font-size:0.85rem;color:#94a3b8">掃描上方 QR Code 開啟網頁</p>
   </div>
 
 </div>
@@ -266,5 +496,227 @@
   <p>🐢 小琉球一日遊 · 2026.05.01 · 一天玩好玩滿！</p>
 </footer>
 
+<script>
+// ─── PARTICIPANTS ───
+const participants = [
+  "沛汝","志恩","才宸","威全","佳佩","芊妤","燕萍","明義","寧宥","育瑋",
+  "駿樺","小貓","親家母","秀梅","秀梅（同行）","胡麗儀","胡宇菲",
+  "李沅璋","李沅璋（同行）","詩筠"
+];
+
+function renderParticipants() {
+  const container = document.getElementById('participant-list');
+  const checked = JSON.parse(localStorage.getItem('liuqiu_checked_in') || '[]');
+  container.innerHTML = participants.map((p, i) => {
+    const isChecked = checked.includes(i);
+    return `<div class="participant-chip${isChecked ? ' checked-in' : ''}" onclick="toggleCheckIn(${i}, this)">
+      <span class="cl-check">${isChecked ? '✓' : '○'}</span>
+      <span>${p}</span>
+      <span class="num">#${i+1}</span>
+    </div>`;
+  }).join('');
+}
+
+function toggleCheckIn(i, el) {
+  let checked = JSON.parse(localStorage.getItem('liuqiu_checked_in') || '[]');
+  if (checked.includes(i)) {
+    checked = checked.filter(x => x !== i);
+  } else {
+    checked.push(i);
+  }
+  localStorage.setItem('liuqiu_checked_in', JSON.stringify(checked));
+  renderParticipants();
+}
+
+// ─── CHECKLIST ───
+const checklistItems = ["防曬乳","拖鞋／涼鞋","手機防水袋","暈船藥","太陽眼鏡","泳衣／浮潛裝備","毛巾","雨具","零食","泳鏡","吹風機（浮潛後用）"];
+
+function renderChecklist() {
+  const container = document.getElementById('checklist');
+  const checked = JSON.parse(localStorage.getItem('liuqiu_checklist') || '[]');
+  container.innerHTML = checklistItems.map((item, i) => {
+    const isChecked = checked.includes(i);
+    return `<div class="checklist-item${isChecked ? ' checked' : ''}" onclick="toggleItem(${i})">
+      <input type="checkbox" ${isChecked ? 'checked' : ''} onclick="event.stopPropagation();toggleItem(${i})">
+      <span class="cl-text">${item}</span>
+      <span class="cl-check">${isChecked ? '✅' : ''}</span>
+    </div>`;
+  }).join('');
+}
+
+function toggleItem(i) {
+  let checked = JSON.parse(localStorage.getItem('liuqiu_checklist') || '[]');
+  if (checked.includes(i)) checked = checked.filter(x => x !== i);
+  else checked.push(i);
+  localStorage.setItem('liuqiu_checklist', JSON.stringify(checked));
+  renderChecklist();
+}
+
+// ─── BUDGET ───
+const budgetItems = [
+  { label: "🚢 船票", icon: "🚢", key: "ship" },
+  { label: "🛵 機車", icon: "🛵", key: "scooter" },
+  { label: "🎫 景點門票", icon: "🎫", key: "ticket" },
+  { label: "🐢 浮潛", icon: "🐢", key: "snorkel" },
+  { label: "🍽️ 午餐", icon: "🍽️", key: "lunch" },
+  { label: "🍧 冰品", icon: "🍧", key: "ice" },
+  { label: "🏠 其他", icon: "🏠", key: "other" }
+];
+
+function renderBudget() {
+  const container = document.getElementById('budget');
+  container.innerHTML = budgetItems.map(item => {
+    const val = localStorage.getItem('liuqiu_budget_' + item.key) || '';
+    return `<div class="budget-row">
+      <span class="br-label"><span>${item.icon}</span>${item.label}</span>
+      <input type="number" placeholder="0" value="${val}" min="0"
+        oninput="saveBudget('${item.key}', this.value)">
+    </div>`;
+  }).join('');
+}
+
+function saveBudget(key, val) {
+  localStorage.setItem('liuqiu_budget_' + key, val);
+  updateBudgetTotal();
+}
+
+function updateBudgetTotal() {
+  let total = 0;
+  budgetItems.forEach(item => {
+    total += parseInt(localStorage.getItem('liuqiu_budget_' + item.key) || 0);
+  });
+  document.getElementById('budget-total').textContent = total.toLocaleString();
+}
+
+// ─── COUNTDOWN ───
+function updateCountdown() {
+  const target = new Date('2026-05-01T07:30:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('countdown').textContent = '已出發！🚢';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('countdown').textContent = `${d}天 ${h}時 ${m}分 ${s}秒`;
+}
+
+// ─── WEATHER ───
+function fetchWeather() {
+  fetch('https://wttr.in/Liuqiu?format=1')
+    .then(r => r.text())
+    .then(txt => {
+      // Parse: "Liuqiu: +28°C, ..."
+      const match = txt.match(/\+?(\d+)°C/);
+      const temp = match ? match[1] + '°C' : '--°C';
+      const desc = txt.replace('Liuqiu:', '').replace(/\s+/g, ' ').trim();
+      document.getElementById('w-temp').textContent = temp;
+      document.getElementById('w-desc').innerHTML = desc;
+    })
+    .catch(() => {
+      document.getElementById('w-desc').innerHTML = '天氣載入失敗';
+    });
+}
+
+// ─── NIGHT MODE ───
+function toggleNight() {
+  document.body.classList.toggle('night');
+  localStorage.setItem('liuqiu_night', document.body.classList.contains('night'));
+}
+
+// ─── SHARE ───
+function sharePage() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: '小琉球一日遊', url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => {
+      showToast('連結已複製！');
+    });
+  }
+  // LINE share
+  const lineUrl = 'https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(url);
+  window.open(lineUrl, '_blank');
+}
+
+// ─── QR CODE ───
+function showQR() {
+  const section = document.getElementById('qr-section');
+  section.style.display = section.style.display === 'none' ? 'block' : 'none';
+  if (section.style.display === 'block') {
+    const canvas = document.getElementById('qr-canvas');
+    drawQR(canvas, window.location.href);
+  }
+}
+
+function drawQR(canvas, text) {
+  // Minimal QR code drawing (URL encoded as simple visual)
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, 200, 200);
+  ctx.fillStyle = '#0891b2';
+  // Draw a simplified QR-like pattern
+  const size = 25;
+  const margin = 20;
+  ctx.fillRect(0, 0, 200, 200);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(margin, margin, 60, 60);
+  ctx.fillRect(margin+5, margin+5, 50, 50);
+  ctx.fillStyle = '#0891b2';
+  ctx.fillRect(margin+10, margin+10, 40, 40);
+  ctx.fillRect(200-margin-60, margin, 60, 60);
+  ctx.fillRect(200-margin-55, margin+5, 50, 50);
+  ctx.fillStyle = '#0891b2';
+  ctx.fillRect(200-margin-50, margin+10, 40, 40);
+  ctx.fillRect(margin, 200-margin-60, 60, 60);
+  ctx.fillRect(margin+5, 200-margin-55, 50, 50);
+  ctx.fillStyle = '#0891b2';
+  ctx.fillRect(margin+10, 200-margin-50, 40, 40);
+  // Data pattern
+  ctx.fillStyle = '#0891b2';
+  for (let i = 0; i < text.length; i++) {
+    const x = margin + 70 + (i % 8) * 10;
+    const y = margin + 70 + Math.floor(i / 8) * 10;
+    if (x < 180 && y < 180) {
+      ctx.fillRect(x, y, 8, 8);
+    }
+  }
+}
+
+// ─── MAP TOGGLE ───
+function toggleMap(embed) {
+  if (embed.style.display === 'block') {
+    embed.style.display = 'none';
+  } else {
+    embed.style.display = 'block';
+  }
+}
+
+// ─── TOAST ───
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// ─── INIT ───
+document.addEventListener('DOMContentLoaded', () => {
+  // Night mode
+  if (localStorage.getItem('liuqiu_night') === 'true') {
+    document.body.classList.add('night');
+  }
+  renderParticipants();
+  renderChecklist();
+  renderBudget();
+  updateBudgetTotal();
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  fetchWeather();
+});
+</script>
 </body>
 </html>
