@@ -414,7 +414,7 @@
 
   <!-- Participants -->
   <div class="section">
-    <h2>👥 參加名單 <span id="checkin-count" style="font-size:0.85rem;color:#64748b;font-weight:400">(已報到 0/20 人)</span></h2>
+    <h2>👥 參加名單</h2>
     <div class="participant-grid" id="participant-list"></div>
   </div>
 
@@ -867,7 +867,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderBudget();
   updateBudgetTotal();
   updateCountdown();
-  updateCheckinCount();
   updateAnnouncement();
   updateEmergencyContacts();
   renderExpenseLog();
@@ -896,18 +895,7 @@ function saveAnnouncement() {
   showToast('公告已更新 📢');
 }
 
-// ─── CHECKIN COUNT ───
-function updateCheckinCount() {
-  const checked = JSON.parse(localStorage.getItem('liuqiu_checked_in') || '[]');
-  document.getElementById('checkin-count').textContent = `已報到 ${checked.length}/20 人`;
-}
 
-// Override renderParticipants to also update count
-const _origRender = renderParticipants;
-function renderParticipants() {
-  _origRender();
-  updateCheckinCount();
-}
 
 // ─── EMERGENCY CONTACTS ───
 function updateEmergencyContacts() {
